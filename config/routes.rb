@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'hello/index'
-  get '/', to: 'welcome#index'
+  constraints subdomain: '' do
+    get '/', to: 'welcome#index'
+    get 'hello', to: 'hello#index'
+  end
 
   constraints subdomain: 'sample' do
     get '/', to: 'welcome#index'
