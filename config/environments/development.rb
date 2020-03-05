@@ -60,3 +60,12 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
+
+Rails.application.configure do
+  config.cache_store = :dalli_store,
+                       'localhost',
+                       {namespace: 'sessions',
+                        key: '_shikaku_session',
+                        expires_in: 3.weeks,
+                        compress: true }
+end
